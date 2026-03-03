@@ -18,14 +18,16 @@ import Profile from "./Pages/Profile";
 import WorkerProfile from "./Pages/WorkerProfile";
 import Page404 from "./Pages/Page404";
 import ChatPage from "./Pages/ChatPage";
-import { useSocket } from "./socket/socket";
+// DISABLED: Socket.io removed for Vercel deployment
+// import { useSocket } from "./socket/socket";
 import ChatContext from "./context/chatContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoadingScreen } from "./Components/ui/Loading";
 
 function App() {
-  useSocket();
+  // DISABLED: useSocket() removed for Vercel deployment
+  // useSocket();
   const auth = useContext(AuthContext);
   const chat = useContext(ChatContext);
 

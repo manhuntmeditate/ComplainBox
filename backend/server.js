@@ -9,11 +9,13 @@ const cookieParser = require("cookie-parser");
 
 //extracting express module and setting server
 const express = require("express");
-const {createServer}=require('http');
-const {startSocket}=require('./socket');
+// DISABLED: Socket.io removed for Vercel deployment (serverless incompatibility)
+// const {createServer}=require('http');
+// const {startSocket}=require('./socket');
 const app = express();
-const httpServer = createServer(app);
-startSocket(httpServer);
+// DISABLED: Changed from httpServer to app for socket removal
+// const httpServer = createServer(app);
+// startSocket(httpServer);
 
 //extracting routers
 const authRouters = require("./routers/auth-routers");
@@ -66,4 +68,5 @@ app.use("/api/worker", workerRouters);
 
 //setting the server port
 const port = process.env.PORT;
-httpServer.listen(port, () => console.log(`Server listening on port ${port}...`));
+// CHANGED: Using app.listen instead of httpServer.listen (socket.io disabled)
+app.listen(port, () => console.log(`Server listening on port ${port}...`));
